@@ -1,16 +1,16 @@
 package com.nepalicoders.toasterlibrary;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.graphics.Color;
+import android.view.Gravity;
 
-import timber.log.Timber;
+import com.tree.rh.ctlib.CT;
 
 public class ToasterMessage {
 
     private static ToasterMessage toasterMessage;
 
     private ToasterMessage() {
-        Timber.plant(new Timber.DebugTree());
     }
 
     public static ToasterMessage getInstance() {
@@ -21,8 +21,14 @@ public class ToasterMessage {
     }
 
     public void show(Context c, String message) {
-        Toast.makeText(c, message, Toast.LENGTH_SHORT).show();
-        Timber.d(message);
+        new CT.Builder(c, message)
+                .textCol(Color.BLACK)
+                .backCol(Color.YELLOW)
+                .borderCol(Color.BLACK)
+                .borderWidth(20)
+                .gravity(Gravity.CENTER)
+                .radius(80, 0, 0, 80)
+                .show();
     }
 
 }
